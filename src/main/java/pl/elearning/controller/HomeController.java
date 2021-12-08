@@ -24,16 +24,20 @@ public class HomeController {
         model.addAttribute("mmm", "testowane");
         return "start";
     }
+
     @GetMapping("/about")
     @ResponseBody
-    public String about() { return "Here you can find some details for logged users"; }
+    public String about() {
+        return "Here you can find some details for logged users";
+    }
 
     @GetMapping("/register")
-    public String register(Model model){
+    public String register(Model model) {
         return "admin/register";
     }
+
     @PostMapping("/register")
-    public String afterRegister(User user, Model model){
+    public String afterRegister(User user, Model model) {
         userService.saveUser(user);
         return "redirect:/admin/start";
     }
