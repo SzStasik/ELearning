@@ -1,21 +1,20 @@
 package pl.elearning.model;
 
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Data
 @NoArgsConstructor
-public class Course {
+@Setter
+@Getter
+public class Categories {
     @Id
-    @Column(name = "course_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String courseName;
-    private String description;
-
-
-
+    private String name;
+    @ManyToOne
+    private Course course;
 }

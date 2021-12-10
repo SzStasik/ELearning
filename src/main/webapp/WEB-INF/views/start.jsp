@@ -16,8 +16,10 @@
 </head>
 <body>
 <h1><i18n:message code="start"/></h1>
-<input type="submit" value="<i18n:message code="start"/>">
-
+<p>Proszę kliknij napis <strong>Java!</strong> i zaczynamy zabawe</p>
+<form action="<c:url value="/login"/>" method="get">
+<input type="submit" value="Java!" >
+</form>
 <sec:authorize access="isAuthenticated()">
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">

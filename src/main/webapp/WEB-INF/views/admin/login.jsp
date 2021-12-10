@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: szymon
@@ -11,12 +12,16 @@
     <title>Title</title>
 </head>
 <body>
-<h1>login page</h1>
+<h1 class="text-color-darker">Logowanie</h1>
+<p>Jeśli nie masz konta kliknij <strong>Rejestracja</strong></p>
 <form method="post">
     <div><label> User Name : <input type="text" name="username"/> </label></div>
     <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
+    <div><input type="submit" value="Logowanie"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form>
+<form action="<c:url value="/register"/>" method="post">
+    <input type="submit" value="Rejestracja">
 </form>
 </body>
 </html>

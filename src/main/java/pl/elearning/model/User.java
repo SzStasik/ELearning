@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -29,16 +30,25 @@ public class User {
     private String details;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
-    @Column(name = "registration_date")
-    private LocalDate registrationDate;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Course> courses;
+    @Column(name = "created_on")
+    private LocalDate createdOn;
 
-    public User(Long id, String username, String password, String email, int enabled, String details, LocalDate registrationDate) {
+
+    public User(Long id, String username, String password, String email, int enabled, String details, Set<Role> roles, LocalDate createdOn) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.enabled = enabled;
         this.details = details;
-        this.registrationDate = registrationDate;
+        this.roles = roles;
+        this.createdOn = createdOn;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        createdOn = LocalDate.now();
     }
 }
