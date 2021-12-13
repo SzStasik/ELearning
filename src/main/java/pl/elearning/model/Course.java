@@ -13,9 +13,12 @@ public class Course {
     @Column(name = "course_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String courseName;
+    private String name;
     private String description;
 
-
-
+    public Course(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 }

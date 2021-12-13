@@ -14,4 +14,6 @@ public class AdminController {
     public String about() {
         return "Here you can find some details for logged users";
     }
+
 }
+

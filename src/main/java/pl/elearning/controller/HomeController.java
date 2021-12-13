@@ -22,7 +22,7 @@ public class HomeController {
 
     public String home(Model model) {
         model.addAttribute("mmm", "testowane");
-        return "start";
+        return "home/start";
     }
 
     @GetMapping("/about")
@@ -39,6 +39,6 @@ public class HomeController {
     @PostMapping("/register")
     public String afterRegister(User user, Model model) {
         userService.saveUser(user);
-        return "redirect:/admin/start";
+        return "redirect:/admin/login";
     }
 }
