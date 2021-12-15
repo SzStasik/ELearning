@@ -24,7 +24,7 @@
     <tbody>
     <c:forEach items="${course}" var="course">
         <tr>
-            <td>${course.course_id}</td>
+            <td>${course.id}</td>
             <td>${course.name}</td>
             <td>${course.description}</td>
         </tr>
