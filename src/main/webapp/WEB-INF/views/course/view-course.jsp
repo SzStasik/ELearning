@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: szymon
@@ -12,24 +14,30 @@
     <title>Course</title>
 </head>
 <body>
-<h1>Hello</h1>
+<sec:authorize access="isAuthenticated()">
+    <h1 style="color:blue;">Dostepne kursy:</h1>
 <table>
     <thead>
     <tr>
         <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Nazwa</th>
+        <th>Opis</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${course}" var="course">
         <tr>
-            <td>${course.id}</td>
+            <td><a href="http://localhost:8080/categories/${course.id}" rel="noopener">${course.id}</a></td>
             <td>${course.name}</td>
             <td>${course.description}</td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
+    <form action="<c:url value="/logout"/>" method="post">
+        <input type="submit" value="Wyloguj">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+</sec:authorize>
 </body>
 </html>

@@ -23,12 +23,12 @@ public class CourseController {
     @GetMapping("/viewcourse")
     public String viewCourse(Model model){
         model.addAttribute("course", courseService.getCourse());
-        return "view-course";
+        return "course/view-course";
     }
     @GetMapping("/addcourse")
     public String addCourseView(Model model){
         model.addAttribute("course", new Course());
-        return "add-course";
+        return "course/add-course";
     }
 
     @PostMapping("/addcourse")

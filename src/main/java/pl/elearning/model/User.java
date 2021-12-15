@@ -1,5 +1,6 @@
 package pl.elearning.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -21,16 +22,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NonNull
     @Column(name = "username", nullable = false, unique = true, length = 60)
     private String username;
+    @NonNull
     @Column(name = "password")
     private String password;
+    @NotNull
     @Column(name = "email")
     private String email;
     @Column(name = "enabled")
     private int enabled;
-    @Column(name = "details")
-    private String details;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -39,13 +41,12 @@ public class User {
     private LocalDate createdOn;
 
 
-    public User(Long id, String username, String password, String email, int enabled, String details, Set<Role> roles, LocalDate createdOn) {
+    public User(Long id, String username, String password, String email, int enabled, Set<Role> roles, LocalDate createdOn) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.enabled = enabled;
-        this.details = details;
         this.roles = roles;
         this.createdOn = createdOn;
     }
