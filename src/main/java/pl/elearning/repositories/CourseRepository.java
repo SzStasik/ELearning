@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import pl.elearning.model.Course;
 
 import java.util.Collection;
-import java.util.Optional;
 
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {

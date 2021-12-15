@@ -24,9 +24,12 @@
 <sec:authorize access="isAuthenticated()">
     <h1>Witaj <sec:authentication property="principal.username"/> ! </h1>
     <p>Wybierz swój kurs</p>
-    <p><a href="/course/Java">Java</a></p>
-    <p><a href="/SQL">SQL</a></p>
-    <p><a href="/HTML">HTML</a></p>
+    <p>Dostepne kursy:</p>
+    <p><a href="/course/viewcourse">kursy</a></p>
+<form action="<c:url value="http://localhost:8080/course/viewcourse"/>" method="get">
+    <input type="submit" value="kursy">
+
+</form>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

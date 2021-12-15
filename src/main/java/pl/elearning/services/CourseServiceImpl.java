@@ -17,7 +17,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Collection<Course> getCourse() {
-        return null;
+        return courseRepository.findAll();
     }
 
     @Override
