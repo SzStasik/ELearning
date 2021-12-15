@@ -2,12 +2,14 @@ package pl.elearning.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
 @Data
 @NoArgsConstructor
+@ToString
 public class Course {
     @Id
     @Column(name = "course_id")

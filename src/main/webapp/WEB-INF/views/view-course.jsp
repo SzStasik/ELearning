@@ -12,19 +12,20 @@
     <title>Course</title>
 </head>
 <body>
+<h1>Hello</h1>
 <table>
     <thead>
     <tr>
-        <th>id</th>
-        <th>courseName</th>
-        <th>description</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${course}" var="course">
         <tr>
             <td>${course.course_id}</td>
-            <td>${course.course_name}</td>
+            <td>${course.name}</td>
             <td>${course.description}</td>
         </tr>
     </c:forEach>

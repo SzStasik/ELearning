@@ -17,12 +17,12 @@
     <div>Successfully added Course with Name: ${savedCourse.courseName}</div>
 </c:if>
 
-<c:url var="add-course" value="/WEB-INF/views"/>
-<form:form action="${course}" method="post" modelAttribute="course">
+<c:url var="course" value="/WEB-INF/views"/>
+<form action="${course}" method="post"
     <form:label path="courseName">Course Name: </form:label> <form:input type="text" path="name"/>
     <form:label path="description">Description: </form:label> <form:input path="description"/>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="submit" value="submit"/>
-</form:form>
+</form>
 </body>
 </html>
