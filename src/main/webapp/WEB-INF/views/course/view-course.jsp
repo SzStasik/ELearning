@@ -16,6 +16,7 @@
 <body>
 <sec:authorize access="isAuthenticated()">
     <h1 style="color:blue;">Dostepne kursy:</h1>
+    <p>Wybierz kurs klikając na numer pod <strong>Id</strong></p>
 <table>
     <thead>
     <tr>

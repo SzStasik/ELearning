@@ -5,7 +5,6 @@ import pl.elearning.model.Course;
 import pl.elearning.repositories.CourseRepository;
 
 import java.util.Collection;
-import java.util.Collections;
 
 @Service
 public class CourseServiceImpl implements CourseService {

@@ -14,7 +14,22 @@
 </head>
 <body>
 <sec:authorize access="isAuthenticated()">
-    <p><a href="/article/Tablice">Tablice</a></p>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nazwa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${categories}" var="categories">
+            <tr>
+                <td>${categories.id}</td>
+                <td>${categories.name}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
