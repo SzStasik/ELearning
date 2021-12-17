@@ -5,16 +5,15 @@ import org.springframework.stereotype.Service;
 import pl.elearning.model.Categories;
 import pl.elearning.repositories.CategoriesRepository;
 
-import java.util.Collection;
 import java.util.List;
 
 @Service
-public class CategoriesServiceImpl {
+public class CategoriesService {
     @Autowired
 
     private CategoriesRepository categoriesRepository;
 
-    public CategoriesServiceImpl(CategoriesRepository categoriesRepository) {
+    public CategoriesService(CategoriesRepository categoriesRepository) {
         this.categoriesRepository = categoriesRepository;
     }
 

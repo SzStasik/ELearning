@@ -28,13 +28,14 @@
     <tbody>
     <c:forEach items="${course}" var="course">
         <tr>
-            <td><a href="http://localhost:8080/categories/${course.id}" rel="noopener">${course.id}</a></td>
+            <td><a href="http://localhost:8080/course/${course.id}" rel="noopener">${course.id}</a></td>
             <td>${course.name}</td>
             <td>${course.description}</td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
+    <div><a href="/course/add"><button>Dodaj</button></a> </div>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
