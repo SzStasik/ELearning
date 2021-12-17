@@ -1,8 +1,9 @@
-package pl.elearning.services;
+package pl.elearning.servicesImpl;
 
 import org.springframework.stereotype.Service;
 import pl.elearning.model.Course;
 import pl.elearning.repositories.CourseRepository;
+import pl.elearning.services.CourseService;
 
 import java.util.Collection;
 
@@ -21,6 +22,6 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course addCourse(Course course) {
-        return null;
+        return courseRepository.save(course);
     }
 }

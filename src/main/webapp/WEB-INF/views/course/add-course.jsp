@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: szymon
@@ -13,16 +14,12 @@
     <title>Add Course</title>
 </head>
 <body>
-<c:if test="${addCourseSuccess}">
-    <div>Successfully added Course with Name: ${savedCourse.courseName}</div>
-</c:if>
-
-<c:url var="course" value="/WEB-INF/views"/>
-<form action="${course}" method="post"
-    <form:label path="name">Course Name: </form:label> <form:input type="text" path="name"/>
-    <form:label path="description">Description: </form:label> <form:input path="description"/>
+<sec:authorize access="isAuthenticated()">
+<form method="post">
+    <div><label> Nazwa Kursu : <input type="text" name="name"/> </label></div>
+    <div><label> Opis: <input type="text" name="description"/> </label></div>
+    <div><input type="submit" value="Dodaj"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <input type="submit" value="submit"/>
-</form>
+    </sec:authorize>
 </body>
 </html>

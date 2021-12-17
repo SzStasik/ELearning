@@ -1,11 +1,12 @@
 package pl.elearning.model;
 
 import lombok.*;
-import org.hibernate.validator.constraints.UniqueElements;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,18 +22,17 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
-    @Size(min = 3, max = 20)
-    @UniqueElements
-    @Column(name = "username", nullable = false, unique = true, length = 60)
+    @NotEmpty(message = "To pole nie może być puste")
+    @Length(min = 5, message = "Login musi posiadac co najmniej 5 znaków")
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
-    @NotBlank
-    @Size(min = 3, max = 20)
+    @NotEmpty(message = "To pole nie może być puste")
+    @Length(min = 5, message = "Hasło musi posiadac co najmniej 5 znaków")
     @Column(name = "password")
     private String password;
-    @NotBlank
+    @NotEmpty(message = "To pole nie może być puste")
     @Email
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "enabled")
     private int enabled;

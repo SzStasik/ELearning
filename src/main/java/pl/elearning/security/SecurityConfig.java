@@ -14,6 +14,7 @@ import pl.elearning.services.SpringDataUserDetailsService;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
     @Bean
     public SpringDataUserDetailsService customUserDetailsService() {
         return new SpringDataUserDetailsService();
@@ -27,9 +28,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").hasAnyRole("USER", "ADMIN")
-                .and().formLogin()
-                .loginPage("/login");
+                .antMatchers("/").hasAnyRole("USER","ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .and().formLogin().loginPage("/login")
+                .and().logout().logoutSuccessUrl("/")
+                .permitAll()
+                .and().exceptionHandling().accessDeniedPage("/403");
     }
 
 }

@@ -9,5 +9,4 @@ import java.util.Collection;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long> {
     Collection<Course> findAllByName(String name);
-
 }

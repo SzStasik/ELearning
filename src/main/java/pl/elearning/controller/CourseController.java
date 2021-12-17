@@ -20,30 +20,24 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @GetMapping("/viewcourse")
+    @GetMapping("/view")
     public String viewCourse(Model model){
         model.addAttribute("course", courseService.getCourse());
         return "course/view-course";
     }
-    @GetMapping("/addcourse")
+    @GetMapping("/add")
     public String addCourseView(Model model){
         model.addAttribute("course", new Course());
         return "course/add-course";
     }
 
-    @PostMapping("/addcourse")
+    @PostMapping("/add")
     public RedirectView addCourse(@ModelAttribute("course")Course course, RedirectAttributes redirectAttributes){
-        final RedirectView redirectView = new RedirectView("/course/addcourse", true);
+        final RedirectView redirectView = new RedirectView("/course/view", true);
         Course savedCourse = courseService.addCourse(course);
         redirectAttributes.addFlashAttribute("savedCourse", savedCourse);
         redirectAttributes.addFlashAttribute("addCourseSuccess", true);
         return redirectView;
     }
-
-    @GetMapping("/course/Java")
-    public String display(){
-        return "/categories/categories";
-    }
-
 
 }
