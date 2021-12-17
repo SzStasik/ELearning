@@ -9,7 +9,8 @@ public interface UserService {
 
     void saveUser(User user);
 
+    void delete(Long id);
 
-//    Object findAll();
+    Object findAll();
 }
 

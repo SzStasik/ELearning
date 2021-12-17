@@ -42,9 +42,14 @@ public class UserServiceImpl implements UserService {
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
-//
-//    @Override
-//    public Object findAll() {
-//        return null;
-//    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public Object findAll() {
+        return userRepository.findAll();
+    }
 }

@@ -18,7 +18,6 @@
     <thead>
     <tr>
         <th>Id</th>
-        <th>Stworzone</th>
         <th>Email</th>
         <th>Nazwa</th>
         <th>Role</th>
@@ -28,10 +27,9 @@
     <c:forEach items="${users}" var="user">
         <tr>
             <td>${user.id}</td>
-            <td>${user.created_on}</td>
             <td>${user.email}</td>
             <td>${user.username}</td>
-            <td>${user.role}</td>
+
         </tr>
     </c:forEach>
     </tbody>
