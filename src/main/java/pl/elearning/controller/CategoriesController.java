@@ -5,22 +5,22 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.elearning.model.Categories;
-import pl.elearning.servicesImpl.CategoriesService;
+import pl.elearning.services.CategoriesService;
 
 import java.util.List;
 
 @Controller
 public class CategoriesController {
 
-    private final CategoriesService categoriesServiceImpl;
+    private final CategoriesService categoriesService;
 
     public CategoriesController(CategoriesService categoriesServiceImpl) {
-        this.categoriesServiceImpl = categoriesServiceImpl;
+        this.categoriesService = categoriesServiceImpl;
     }
 
     @GetMapping("/categories")
     public String viewCourse(Model model) {
-        List<Categories> listCategories = categoriesServiceImpl.listAll();
+        List<Categories> listCategories = categoriesService.listAll();
         model.addAttribute("categories", listCategories);
         return "categories/view-categories";
     }
@@ -34,14 +34,14 @@ public class CategoriesController {
 
     @PostMapping("/categories/add")
     public String saveCategories(@ModelAttribute("categories") Categories categories) {
-        categoriesServiceImpl.save(categories);
+        categoriesService.save(categories);
         return "redirect:/categories";
     }
 
     @RequestMapping("/categories/edit/{Id}")
     public ModelAndView showEditCategoriesForm(@PathVariable(name = "Id") Long id) {
         ModelAndView mav = new ModelAndView("categories/edit-categories");
-        Categories categories = categoriesServiceImpl.get(id);
+        Categories categories = categoriesService.get(id);
         mav.addObject("categories", categories);
 
         return mav;
@@ -49,7 +49,7 @@ public class CategoriesController {
     }
     @RequestMapping("/categories/delete/{Id}")
     public String deleteCategories(@PathVariable(name = "Id") Long id) {
-     categoriesServiceImpl.delete(id);
+     categoriesService.delete(id);
         return "redirect:/categories";
     }
 }

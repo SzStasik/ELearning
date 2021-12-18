@@ -24,14 +24,16 @@
         <tbody>
         <c:forEach items="${categories}" var="categories">
             <tr>
-                <td><a href="http://localhost:8080/categories/${categories.id}" rel="noopener">${categories.id}</a></td>
+                <td>${categories.id}</td>
                 <td>${categories.name}</td>
+                <td><a href="/article/${article.id}" rel="noopener"><button>Wybierz</button></a></td>
+                <td><a href="/categories/delete/${categories.id}"><button>Usuń</button></a></td>
+                <td><a href="/categories/edit/${categories.id}"><button>Edytuj</button></a></td>
             </tr>
-            <div><a href="/categories/delete/${categories.id}"><button>Usuń</button></a> </div>
         </c:forEach>
         </tbody>
     </table>
-    <div><a href="/categories/add"><button>Dodaj</button></a> </div>
+    <div><a href="/categories/add"/><button>Dodaj</button></a> </div>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

@@ -1,4 +1,4 @@
-package pl.elearning.servicesImpl;
+package pl.elearning.services.servicesImpl;
 
 import org.springframework.stereotype.Service;
 import pl.elearning.model.Role;

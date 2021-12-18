@@ -16,7 +16,6 @@
 <body>
 <sec:authorize access="isAuthenticated()">
     <h1 style="color:blue;">Dostepne kursy:</h1>
-    <p>Wybierz kurs klikając na numer pod <strong>Id</strong></p>
 <table>
     <thead>
     <tr>
@@ -26,16 +25,22 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${course}" var="course">
+
+    <c:forEach items="${course}" var="course" >
+
         <tr>
-            <td><a href="http://localhost:8080/course/${course.id}" rel="noopener">${course.id}</a></td>
+            <td>${course.id}</td>
             <td>${course.name}</td>
             <td>${course.description}</td>
+            <td><a href="/categories/${categories.id}" rel="noopener"><button>Wybierz</button></a></td>
+            <td><a href="/course/delete/${course.id}"><button>Usuń</button></a></td>
+            <td><a href="/course/edit/${course.id}"><button>Edytuj</button></a></td>
         </tr>
     </c:forEach>
+
     </tbody>
 </table>
-    <div><a href="/course/add"><button>Dodaj</button></a> </div>
+    <div><a href="/course/add"/><button>Dodaj</button></a> </div>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

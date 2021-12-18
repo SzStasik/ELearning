@@ -1,4 +1,4 @@
-package pl.elearning.servicesImpl;
+package pl.elearning.services.servicesImpl;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,13 +25,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User get(Long id) {
+        return userRepository.getById(id);
+    }
+
+    @Override
     public User findByUserName(String username) {
         return userRepository.findByUsername(username);
     }
 
     @Override
     public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findUserByEmail(email);
     }
 
     @Override

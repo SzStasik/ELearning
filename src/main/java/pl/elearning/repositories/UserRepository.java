@@ -8,5 +8,5 @@ import pl.elearning.model.User;
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
-    User findByEmail(String email);
+    User findUserByEmail(String email);
 }

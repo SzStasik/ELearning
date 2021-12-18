@@ -28,10 +28,13 @@
                 <td>${article.id}</td>
                 <td>${article.name}</td>
                 <td>${article.description}</td>
+                <td><a href="/article/delete/${article.id}"><button>Usuń</button></a></td>
+                <td><a href="/article/edit/${article.id}"><button>Edytuj</button></a> </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+    <div><a href="add"/><button>Dodaj</button></a> </div>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
