@@ -17,14 +17,12 @@
     <table>
         <thead>
         <tr>
-            <th>Id</th>
             <th>Nazwa</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${categories}" var="categories">
             <tr>
-                <td>${categories.id}</td>
                 <td>${categories.name}</td>
                 <td><a href="/article/${article.id}" rel="noopener"><button>Wybierz</button></a></td>
                 <td><a href="/categories/delete/${categories.id}"><button>Usuń</button></a></td>

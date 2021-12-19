@@ -19,7 +19,6 @@
 <table>
     <thead>
     <tr>
-        <th>Id</th>
         <th>Nazwa</th>
         <th>Opis</th>
     </tr>
@@ -29,7 +28,6 @@
     <c:forEach items="${course}" var="course" >
 
         <tr>
-            <td>${course.id}</td>
             <td>${course.name}</td>
             <td>${course.description}</td>
             <td><a href="/categories/${categories.id}" rel="noopener"><button>Wybierz</button></a></td>

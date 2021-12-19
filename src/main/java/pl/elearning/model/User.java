@@ -22,15 +22,15 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotEmpty(message = "To pole nie może być puste")
+    @NotEmpty(message = "To pole nie może być puste ")
     @Length(min = 5, message = "Login musi posiadac co najmniej 5 znaków")
     @Column(name = "username", nullable = false, unique = true)
     private String username;
-    @NotEmpty(message = "To pole nie może być puste")
+    @NotEmpty(message = "To pole nie może być puste ")
     @Length(min = 5, message = "Hasło musi posiadac co najmniej 5 znaków")
     @Column(name = "password")
     private String password;
-    @NotEmpty(message = "To pole nie może być puste")
+    @NotEmpty(message = "To pole nie może być puste ")
     @Email
     @Column(name = "email", unique = true)
     private String email;

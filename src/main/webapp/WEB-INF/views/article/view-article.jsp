@@ -17,7 +17,6 @@
     <table>
         <thead>
         <tr>
-            <th>Id</th>
             <th>Nazwa</th>
             <th>Opis</th>
         </tr>
@@ -25,7 +24,6 @@
         <tbody>
         <c:forEach items="${article}" var="article">
             <tr>
-                <td>${article.id}</td>
                 <td>${article.name}</td>
                 <td>${article.description}</td>
                 <td><a href="/article/delete/${article.id}"><button>Usuń</button></a></td>

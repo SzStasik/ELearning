@@ -16,5 +16,6 @@
     ${er}
 
 </c:forEach>
+<div><a href="/register"/><button>Powrót</button></a> </div>
 </body>
 </html>
