@@ -17,7 +17,7 @@
     <table>
         <thead>
         <tr>
-            <th>Nazwa</th>
+            <th>(Nazwa kursu)</th>
         </tr>
         </thead>
         <tbody>

@@ -14,9 +14,9 @@
 <body>
 <h1>Rejestracja</h1>
 <form method="post" modelAttribute="user">
-    <div><label> Login : <input type="text" name="username"/> </label></div>
+    <div><label> Login: <input type="text" name="username"/> </label></div>
     <div><label> Hasło: <input type="password" name="password"/> </label></div>
-    <div><label> E-Mail : <input type="text" name="email"/> </label></div>
+    <div><label> E-Mail: <input type="text" name="email"/> </label></div>
     <div><input type="submit" value="Zarejestruj"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>

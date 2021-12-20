@@ -14,12 +14,12 @@
 <body>
 <h1 class="text-color-darker">Logowanie</h1>
 <form method="post">
-    <div><label> Login : <input type="text" name="username"/> </label></div>
+    <div><label> Login: <input type="text" name="username"/> </label></div>
     <div><label> Hasło: <input type="password" name="password"/> </label></div>
     <div><input type="submit" value="Logowanie"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 </form>
-<p>Jeśli nie masz konta kliknij <a href="http://localhost:8080/register" rel="noopener"><strong>Rejestracja</strong></a> </p>
+<p>Jeśli nie masz konta, kliknij <a href="http://localhost:8080/register" rel="noopener"><strong>Rejestracja</strong>.</a> </p>
 </form>
 </body>
 </html>

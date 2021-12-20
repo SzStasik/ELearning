@@ -16,7 +16,7 @@
 <body>
 <sec:authorize access="isAuthenticated()">
 <form method="post">
-    <div><label> Nazwa Kursu : <input type="text" name="name"/> </label></div>
+    <div><label> Nazwa kursu: <input type="text" name="name"/> </label></div>
     <div><label> Opis: <input type="text" name="description"/> </label></div>
     <div><input type="submit" value="Dodaj"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

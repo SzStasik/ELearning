@@ -14,9 +14,9 @@
 <body>
 <sec:authorize access="isAuthenticated()">
 <form method="post">
-    <div><label> Nazwa Użytkownika : <input type="text" name="username"/> </label></div>
-    <div><label> Hasło  : <input type="password" name="password"/> </label></div>
-    <div><label> E-mail  : <input type="text" name="email"/> </label></div>
+    <div><label> Login: <input type="text" name="username"/> </label></div>
+    <div><label> Hasło: <input type="password" name="password"/> </label></div>
+    <div><label> E-Mail: <input type="text" name="email"/> </label></div>
     <div><input type="submit" value="Dodaj"/></div>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </sec:authorize>

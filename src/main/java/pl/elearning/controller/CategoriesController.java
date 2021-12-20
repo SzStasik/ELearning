@@ -6,7 +6,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.elearning.model.Categories;
+import pl.elearning.model.Course;
 import pl.elearning.services.CategoriesService;
+import pl.elearning.services.CourseService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -15,9 +17,11 @@ import java.util.List;
 public class CategoriesController {
 
     private final CategoriesService categoriesService;
+    private final CourseService courseService;
 
-    public CategoriesController(CategoriesService categoriesServiceImpl) {
-        this.categoriesService = categoriesServiceImpl;
+    public CategoriesController(CategoriesService categoriesService, CourseService courseService) {
+        this.categoriesService = categoriesService;
+        this.courseService = courseService;
     }
 
     @GetMapping("/categories")

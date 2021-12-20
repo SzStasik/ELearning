@@ -16,16 +16,16 @@
 <body>
 <sec:authorize access="!isAuthenticated()">
     <h1><i18n:message code="start"/></h1>
-    <p>Żeby rozpocząć nauke kliknij proszę przycisk <strong>Logowanie</strong></p>
+    <p>Aby rozpocząć naukę, kliknij przycisk <strong>Logowanie</strong>.</p>
     <form action="<c:url value="/login"/>" method="get">
         <input type="submit" value="Logowanie">
     </form>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
-    <h1>Witaj <sec:authentication property="principal.username"/> ! </h1>
-    <p>Wybierz swój kurs</p>
+    <h1>Witaj <sec:authentication property="principal.username"/>! </h1>
+    <p>Wybierz swój kurs:</p>
 <form action="<c:url value="http://localhost:8080/course"/>" method="get">
-    <input type="submit" value="kursy">
+    <input type="submit" value="Kursy">
 
 </form>
     <form action="<c:url value="/logout"/>" method="post">
