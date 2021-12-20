@@ -13,7 +13,7 @@
 </head>
 <body>
 <c:forEach items="${validateErrors}" var="er">
-    ${er}
+    ${er}<br>
 
 </c:forEach>
 <div><a href="/register"/><button>Powrót</button></a> </div>

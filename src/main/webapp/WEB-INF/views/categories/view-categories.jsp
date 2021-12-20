@@ -32,6 +32,7 @@
         </tbody>
     </table>
     <div><a href="/categories/add"/><button>Dodaj</button></a> </div>
+    <div><a href="/course"/><button>Cofnij</button></a> </div>
     <form action="<c:url value="/logout"/>" method="post">
         <input type="submit" value="Wyloguj">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

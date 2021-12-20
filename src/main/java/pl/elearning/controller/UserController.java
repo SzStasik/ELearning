@@ -31,7 +31,7 @@ public class UserController {
            return "redirect:/validate";
         } else {
             userService.saveUser(user);
-            return "redirect:/admin/login";
+            return "redirect:/login";
         }
 
     }

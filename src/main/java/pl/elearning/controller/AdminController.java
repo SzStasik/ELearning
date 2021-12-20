@@ -2,6 +2,7 @@ package pl.elearning.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.elearning.model.User;
@@ -11,6 +12,9 @@ import pl.elearning.services.RoleService;
 import pl.elearning.services.UserService;
 import pl.elearning.services.CategoriesService;
 
+import javax.validation.Valid;
+import javax.validation.Validator;
+
 @Controller
 public class AdminController {
 
@@ -19,13 +23,15 @@ public class AdminController {
     private final CourseService courseService;
     private final CategoriesService categoriesService;
     private final ArticleService articleService;
+    private final Validator validator;
 
-    public AdminController(UserService userService, RoleService roleService, CourseService courseService, CategoriesService categoriesService, ArticleService articleService) {
+    public AdminController(UserService userService, RoleService roleService, CourseService courseService, CategoriesService categoriesService, ArticleService articleService, Validator validator) {
         this.userService = userService;
         this.roleService = roleService;
         this.courseService = courseService;
         this.categoriesService = categoriesService;
         this.articleService = articleService;
+        this.validator = validator;
     }
 
     @GetMapping("/users")
@@ -35,12 +41,32 @@ public class AdminController {
         return "/admin/user-list";
     }
 
-    @RequestMapping("/user/edit/{Id}")
-    public ModelAndView showEditUserForm(@PathVariable(name = "Id") Long id) {
-        ModelAndView mav = new ModelAndView("admin/edit-user");
-        User user = userService.get(id);
-        mav.addObject("user", user);
-        return mav;
+    @GetMapping("/users/add")
+    public String addUser(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
+        return "admin/add-user";
+    }
+
+    @PostMapping("/users/add")
+    public String saveUser(@ModelAttribute("user") User user){
+    userService.saveUser(user);
+    return "redirect:/users";
+    }
+
+    @GetMapping("/users/edit/{Id}")
+    public String update(Model model, @PathVariable long Id) {
+        model.addAttribute("user", userService.get(Id));
+        return "admin/edit-user";
+    }
+
+    @PostMapping("/users/edit/{Id}")
+    public String processUpdate(@Valid User user, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "admin/edit-user";
+        }
+        userService.saveUser(user);
+        return "redirect:/users";
     }
 
     @RequestMapping("/users/delete/{Id}")
