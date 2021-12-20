@@ -2,11 +2,13 @@ package pl.elearning.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.elearning.model.Categories;
 import pl.elearning.services.CategoriesService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -38,18 +40,24 @@ public class CategoriesController {
         return "redirect:/categories";
     }
 
-    @RequestMapping("/categories/edit/{Id}")
-    public ModelAndView showEditCategoriesForm(@PathVariable(name = "Id") Long id) {
-        ModelAndView mav = new ModelAndView("categories/edit-categories");
-        Categories categories = categoriesService.get(id);
-        mav.addObject("categories", categories);
-
-        return mav;
-
+    @GetMapping("/categories/edit/{Id}")
+    public String update(Model model, @PathVariable long Id) {
+        model.addAttribute("categories", categoriesService.get(Id));
+        return "categories/edit-categories";
     }
+
+@PostMapping("/categories/edit/{Id}")
+        public String processUpdate(@Valid Categories categories, BindingResult result, Model model){
+    if(result.hasErrors()){
+        return "categories/edit-categories";
+    }
+        categoriesService.save(categories);
+    return "redirect:/categories";
+    }
+
     @RequestMapping("/categories/delete/{Id}")
     public String deleteCategories(@PathVariable(name = "Id") Long id) {
-     categoriesService.delete(id);
+        categoriesService.delete(id);
         return "redirect:/categories";
     }
 }

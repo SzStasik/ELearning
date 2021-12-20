@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: szymon
@@ -12,22 +13,13 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Edit Categories</h1>
-<form action="edit-categories.jsp" method="post">
-    <table>
-        <tr>
-            <td>Categories ID:</td>
-            <td><input type="text" name="${categories.id}"  /></td>
-        </tr>
-        <tr>
-            <td>Categories Name:</td>
-            <td><input type="text" name="${categories.name}" /></td>
-        </tr>
-
-        <tr>
-            <td><button type="submit">Zapisz</button></td>
-        </tr>
-    </table>
-</form>
+<h1>Edytor Kategorii</h1>
+<form:form method="post" modelAttribute="categories">
+    <form:hidden path="id"/>
+    <label>Nazwa: <form:input path="name"/>
+    </label><br>
+    <input type="submit" value="Zapisz">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form:form>
 </body>
 </html>

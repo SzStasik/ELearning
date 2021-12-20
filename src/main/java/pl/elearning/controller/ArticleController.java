@@ -2,11 +2,13 @@ package pl.elearning.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.elearning.model.Article;
 import pl.elearning.services.ArticleService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -38,13 +40,21 @@ public class ArticleController {
         return "redirect:/article";
     }
 
-    @RequestMapping("/article/edit/{Id}")
-    public ModelAndView showEditArticleForm(@PathVariable(name = "Id") Long id) {
-        ModelAndView mav = new ModelAndView("article/edit-article");
-        Article article = articleService.get(id);
-        mav.addObject("article", article);
-        return mav;
+    @GetMapping("/article/edit/{Id}")
+  public String update(Model model, @PathVariable long Id){
+        model.addAttribute("article", articleService.get(Id));
+        return "article/edit-article";
     }
+    @PostMapping("/article/edit/{Id}")
+    public String processUpdate(@Valid Article article, BindingResult result, Model model){
+        if(result.hasErrors()){
+            return "article/edit-article";
+        }
+        articleService.save(article);
+        return "redirect:/article";
+    }
+
+
     @RequestMapping("/article/delete/{id}")
     public String deleteArticle(@PathVariable(name = "id") Long id){
         articleService.delete(id);

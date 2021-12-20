@@ -13,14 +13,14 @@
     <title>Edit</title>
 </head>
 <body>
-<h1>Edit Form</h1>
+<h1>Edytor Kursu</h1>
 <form:form method="post" modelAttribute="course">
     <form:hidden path="id"/>
-    <label>Opis
-        <form:input path="description"/>
-    </label><br>
     <label>Nazwa
         <form:input path="name"/>
+    </label><br>
+    <label>Opis
+        <form:input path="description"/>
     </label><br>
     <input type="submit" value="Zapisz">
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

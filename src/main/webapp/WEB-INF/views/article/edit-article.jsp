@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: szymon
@@ -11,6 +12,17 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Edit</h1>
+<h1>Edytor Artykułów</h1>
+<form:form method="post" modelAttribute="article">
+   <form:hidden path="id"/>
+    <label>Nazwa
+        <form:input path="name"/>
+    </label><br>
+    <label>Opis
+        <form:input path="description"/>
+    </label><br>
+    <input type="submit" value="Zapisz">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</form:form>
 </body>
 </html>
