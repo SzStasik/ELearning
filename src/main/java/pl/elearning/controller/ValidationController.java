@@ -18,12 +18,13 @@ public class ValidationController {
     public ValidationController(Validator validator) {
         this.validator = validator;
     }
+
     @GetMapping("/validate")
-    public String validate(Model model){
+    public String validate(Model model) {
         User user = new User();
         Set<ConstraintViolation<User>> validate = validator.validate(user);
         List<String> stringList = new ArrayList<>();
-        for (ConstraintViolation<User> userConstraintViolation : validate){
+        for (ConstraintViolation<User> userConstraintViolation : validate) {
             stringList.add(userConstraintViolation.getPropertyPath() + " : " + userConstraintViolation.getMessage());
         }
         model.addAttribute("validateErrors", stringList);

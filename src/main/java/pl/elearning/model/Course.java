@@ -12,7 +12,6 @@ import javax.persistence.*;
 @ToString
 public class Course {
     @Id
-    @Column(name = "course_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;

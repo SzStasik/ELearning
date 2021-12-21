@@ -50,13 +50,13 @@ public class CategoriesController {
         return "categories/edit-categories";
     }
 
-@PostMapping("/categories/edit/{Id}")
-        public String processUpdate(@Valid Categories categories, BindingResult result, Model model){
-    if(result.hasErrors()){
-        return "categories/edit-categories";
-    }
+    @PostMapping("/categories/edit/{Id}")
+    public String processUpdate(@Valid Categories categories, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "categories/edit-categories";
+        }
         categoriesService.save(categories);
-    return "redirect:/categories";
+        return "redirect:/categories";
     }
 
     @RequestMapping("/categories/delete/{Id}")

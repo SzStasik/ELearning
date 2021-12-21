@@ -28,7 +28,7 @@ public class UserController {
     @PostMapping("/register")
     public String afterRegister(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
-           return "redirect:/validate";
+            return "redirect:/validate";
         } else {
             userService.saveUser(user);
             return "redirect:/login";

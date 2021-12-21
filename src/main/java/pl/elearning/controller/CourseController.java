@@ -27,34 +27,37 @@ public class CourseController {
         model.addAttribute("course", listCourse);
         return "course/view-course";
     }
+
     @GetMapping("/course/add")
     public String showNewCourseForm(Model model) {
         Course course = new Course();
         model.addAttribute("course", course);
         return "course/add-course";
     }
+
     @PostMapping("/course/add")
-    public String saveCourse(@ModelAttribute("course") Course course){
+    public String saveCourse(@ModelAttribute("course") Course course) {
         courseService.save(course);
         return "redirect:/course";
     }
+
     @GetMapping("/course/edit/{Id}")
     public String update(Model model, @PathVariable long Id) {
-            model.addAttribute("course", courseService.getCourse(Id));
-            return "course/edit-course";
+        model.addAttribute("course", courseService.getCourse(Id));
+        return "course/edit-course";
     }
 
     @PostMapping("/course/edit/{Id}")
-    public String processUpdate(@Valid Course course, BindingResult result, Model model){
-            if(result.hasErrors()){
-                return "course/edit-course";
-            }
-            courseService.save(course);
-            return "redirect:/course";
+    public String processUpdate(@Valid Course course, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "course/edit-course";
         }
+        courseService.save(course);
+        return "redirect:/course";
+    }
 
     @RequestMapping("/course/delete/{id}")
-    public String deleteCourse(@PathVariable(name = "id") Long id){
+    public String deleteCourse(@PathVariable(name = "id") Long id) {
         courseService.delete(id);
         return "redirect:/course";
     }

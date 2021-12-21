@@ -18,13 +18,13 @@ public class CategoriesService {
     }
 
 
-    public List<Categories> listAll()  {
+    public List<Categories> listAll() {
         return categoriesRepository.findAll();
     }
 
 
     public void save(Categories categories) {
-         categoriesRepository.save(categories);
+        categoriesRepository.save(categories);
     }
 
 

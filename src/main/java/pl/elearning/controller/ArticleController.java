@@ -41,13 +41,14 @@ public class ArticleController {
     }
 
     @GetMapping("/article/edit/{Id}")
-  public String update(Model model, @PathVariable long Id){
+    public String update(Model model, @PathVariable long Id) {
         model.addAttribute("article", articleService.get(Id));
         return "article/edit-article";
     }
+
     @PostMapping("/article/edit/{Id}")
-    public String processUpdate(@Valid Article article, BindingResult result, Model model){
-        if(result.hasErrors()){
+    public String processUpdate(@Valid Article article, BindingResult result, Model model) {
+        if (result.hasErrors()) {
             return "article/edit-article";
         }
         articleService.save(article);
@@ -56,7 +57,7 @@ public class ArticleController {
 
 
     @RequestMapping("/article/delete/{id}")
-    public String deleteArticle(@PathVariable(name = "id") Long id){
+    public String deleteArticle(@PathVariable(name = "id") Long id) {
         articleService.delete(id);
         return "redirect:/article";
     }

@@ -12,16 +12,19 @@ public class ArticleService {
     @Autowired
     private ArticleRepository articleRepository;
 
-    public List<Article> listAll(){
+    public List<Article> listAll() {
         return articleRepository.findAll();
     }
-    public void save(Article article){
+
+    public void save(Article article) {
         articleRepository.save(article);
     }
-    public Article get(Long id){
+
+    public Article get(Long id) {
         return articleRepository.findById(id).get();
     }
-    public void delete(Long id){
-     articleRepository.deleteById(id);
+
+    public void delete(Long id) {
+        articleRepository.deleteById(id);
     }
 }
